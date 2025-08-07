@@ -11,8 +11,7 @@ pipeline{
             steps {
                 echo 'Recuperation du code'
 
-                git branch: 'main',
-                    url: 'https://github.com/pioloco/pioloco-backend.git',
+                git branch: 'main', url: 'https://github.com/pioloco/pioloco-backend.git'
             }
         }
 
