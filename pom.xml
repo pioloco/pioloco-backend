@@ -64,7 +64,7 @@
 			<scope>test</scope>
 		</dependency>
 	
-		#C'est pour les tests du pipeline ici Lefa
+		<!-- C'est pour les tests du pipeline ici Lefa -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
