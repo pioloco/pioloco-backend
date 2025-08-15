@@ -25,5 +25,8 @@ public interface PublicationRepository extends JpaRepository<Publication,Long> {
     // Publications pour une region specifique
     @Query("SELECT p FROM Publication p WHERE p.bienImmobilier.adresse.region = :region")
     List<Publication> findByRegion(@Param("region") String region);
+    // publication en fonction du type et d'un certain prix
+    @Query("SELECT p FROM Publication p WHERE p.bienImmobilier.prix <=: prixBien")
+    List<Publication> PublicationParPrix(@Param("prixBien") double prixBien);
 
 }

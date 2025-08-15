@@ -1,6 +1,6 @@
 package tech.azaria.pioloco.Entities;
 
-import CODE_DEV_INF.piolko.Entities.enums.TypePublication;
+import tech.azaria.pioloco.Entities.enums.TypePublication;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

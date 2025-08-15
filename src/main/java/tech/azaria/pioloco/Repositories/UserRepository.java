@@ -17,6 +17,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findById(Long id);
     // Trouver un user par email (pour l'authentification)
     Optional<User> findByEmail(String email);
+    //
+    @Query("SELECT u FROM User u WHERE u.nom=:nomUser AND u.prenom=:prenomUser")
+    Optional<User> findByNomAndPrenom(@Param("nomUser") String nomUser,@Param("prenomUser") String prenomUser);
 
     // verifie si un email existe deja
     boolean existsByEmail(String email);

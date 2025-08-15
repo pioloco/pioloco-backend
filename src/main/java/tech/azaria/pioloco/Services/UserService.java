@@ -1,6 +1,6 @@
 package tech.azaria.pioloco.Services;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import tech.azaria.pioloco.Entities.Publication;
 import tech.azaria.pioloco.Entities.User;
 import tech.azaria.pioloco.Repositories.UserRepository;
@@ -25,11 +25,6 @@ public class UserService {
     }
 
     public User createUser(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new EmailAlreadyExistsException("Email " + user.getEmail() + " déjà utilisé");
-        }
-
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
     // liste des users
@@ -49,6 +44,9 @@ public class UserService {
         return userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("utilisateur non present !!"));
     }
 
-
+    // user par son nom et son prenom passes en parametres
+    public User getUserParNomPrenom(String nom , String prenom){
+        return userRepository.findByNomAndPrenom(nom,prenom).orElseThrow(() ->new RuntimeException("cet utilisateur n'existe pas !!"));
+    }
 
 }
