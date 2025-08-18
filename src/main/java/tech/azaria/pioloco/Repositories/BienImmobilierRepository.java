@@ -1,6 +1,7 @@
 package tech.azaria.pioloco.Repositories;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.web.multipart.MultipartFile;
 import tech.azaria.pioloco.Entities.BienImmobilier;
 import tech.azaria.pioloco.Entities.Categorie;
 import org.springframework.data.domain.Page;
@@ -41,4 +42,14 @@ public interface BienImmobilierRepository extends JpaRepository<BienImmobilier,L
 
     // liste des bien dont la superficie depasse celle donnee
     List<BienImmobilier> findBySuperficieGreaterThan(double superficie);
+
+
+    void deleteBien(Long id);
+    BienImmobilier getBienById(Long id);
+
+    List<BienImmobilier> getBiensByCategorie(Long categorieId);
+
+    List<BienImmobilier> getBiensByAdresse(Long adresseId);
+    void addImageToBien(Long bienId, MultipartFile imageFile, String description);
+    void addDocumentToBien(Long bienId, MultipartFile documentFile);
 }

@@ -1,5 +1,6 @@
 package tech.azaria.pioloco.Services;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import tech.azaria.pioloco.Entities.BienImmobilier;
 import tech.azaria.pioloco.Repositories.AdresseRepository;
@@ -21,7 +22,7 @@ public class BienImmobilierService {
         this.categorieRepository = categorieRepository;
         this.adresseRepository = adresseRepository;
     }
-
+    @Transactional
     public BienImmobilier createBienImmobilier(BienImmobilier bien) {
         // Validation des relations
         if (!adresseRepository.existsById(bien.getAdresse().getIdadresse()) && (!categorieRepository.existsById(bien.getCategorie().getIdcategorie() ))) {

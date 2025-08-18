@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CreditRepository extends JpaRepository<Credit,Long> {
     // Trouver les credits d'un user
-    List<Credit> findByUsers_Id(Long userId);
+    List<Credit> findByUser
 }

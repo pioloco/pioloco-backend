@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
+import tech.azaria.pioloco.Entities.enums.Statut;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,6 +41,9 @@ public class BienImmobilier {
 
     @Column(name = "description")
     private String description;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status",nullable = false)
+    private Statut status; //disponible,reserver,vendu
 
     public BienImmobilier() {
         this.images = new HashSet<>();
