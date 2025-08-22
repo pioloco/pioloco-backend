@@ -1,3 +1,6 @@
+/**
+ * pour repersenter les images associees a un bien immobilier
+ */
 package tech.azaria.pioloco.Entities;
 
 import jakarta.persistence.*;

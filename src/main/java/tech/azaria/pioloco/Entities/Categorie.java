@@ -1,3 +1,6 @@
+/**
+ * pour representer les differntes categories de bien immobilier
+ */
 package tech.azaria.pioloco.Entities;
 
 import tech.azaria.pioloco.Entities.enums.NomCategorie;

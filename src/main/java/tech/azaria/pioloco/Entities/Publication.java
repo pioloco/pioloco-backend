@@ -1,3 +1,7 @@
+/**
+ * Represente une publication d'un article sur le site
+ */
+
 package tech.azaria.pioloco.Entities;
 
 import org.springframework.data.annotation.CreatedDate;

@@ -1,6 +1,9 @@
+/**
+ * pour representer un utilisateur du site
+ */
 package tech.azaria.pioloco.Entities;
 
-import jakarta.validation.constraints.Email;
+import com.nimbusds.jose.crypto.impl.PasswordBasedCryptoProvider;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import tech.azaria.pioloco.Entities.enums.Role;
@@ -21,24 +24,25 @@ public class User {
     private Long iduser;
 
     @Column(nullable = false,length = 100)
+    @NotBlank(message = "le nom ne doit pas etre vide")
     private String nom;
 
     @Column(nullable = false,length = 100)
     private String prenom;
 
     @Column(nullable = false, unique = true,length = 100)
-    @Email
     private String email;
 
     @Column(nullable = false,length = 100)
-    private String telephone;
+   private String telephone;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
-    @NotBlank
-    @Size(min = 8)
+    @Size(min = 8,message = "le mot de passe doit contenir au moins 8 caracteres")
     @Column(name = "password",nullable = false)
+    @NotBlank(message = "le motde passe ne doit pas etre vide")
+    @Convert(converter = PasswordBasedCryptoProvider.class)
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -55,7 +59,7 @@ public class User {
         this.credits= new ArrayList<>();
     }
     public int  TotalCredit(){
-        return  credits.stream().mapToInt(Credit ::getNbre_credit).sum();
+        return  credits.stream().mapToInt(Credit ::getNombreCredit).sum();
     }
 
 }

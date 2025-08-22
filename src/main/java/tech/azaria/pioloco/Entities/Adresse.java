@@ -1,6 +1,11 @@
+/**
+ * Represente unne adresse assoiciee a un bien immobilier
+ */
+
 package tech.azaria.pioloco.Entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
@@ -16,9 +21,11 @@ public class Adresse {
     private Long idadresse;
 
     @Column(nullable = false)
+    @NotBlank(message = " la region ne doit pas etre vide")
     private String region;
 
     @Column(nullable = false)
+    @NotBlank(message = " la ville ne doit pas etre vide")
     private String ville;
 
     private String localisation;

@@ -3,7 +3,10 @@ package tech.azaria.pioloco.Services;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
+import tech.azaria.pioloco.DTO.UserCreateDTO;
+import tech.azaria.pioloco.DTO.UserDTO;
 import tech.azaria.pioloco.Entities.Credit;
 import tech.azaria.pioloco.Entities.Publication;
 import tech.azaria.pioloco.Entities.User;
@@ -20,6 +23,7 @@ public class UserService {
     private final DocumentService documentService;
     private ImageService imageService;
     private final Credit credit;
+    private PasswordEncoder passwordEncoder;
 
     //
     boolean userExist(Long id){
@@ -32,8 +36,17 @@ public class UserService {
         }
     }
     @Transactional
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserDTO createUser(UserCreateDTO userCreateDTO) {
+        User user=new User();
+        user.setNom(userCreateDTO.getNom());
+        user.setPrenom(userCreateDTO.getPrenom());
+        user.setEmail(userCreateDTO.getEmail());
+        user.setTelephone(userCreateDTO.getTelephone());
+        user.setRole(userCreateDTO.getRole());
+        // on va hasher le mot de passe
+        user.setPassword(passwordEncoder.encode(userCreateDTO.getPassword()));
+        userRepository.save(user);
+        return 
     }
     public void deleteUser(User user){
         userRepository.delete(user);

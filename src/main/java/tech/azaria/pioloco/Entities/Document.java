@@ -1,8 +1,13 @@
+/**
+ * pour representer les documents qui concernent un bien immobilier en particulier
+ */
+
 package tech.azaria.pioloco.Entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
@@ -12,7 +17,7 @@ import lombok.ToString;
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_document;
 
     @Column(nullable = false)
     private String nom;  // bon doit correspondre au nom du fichier ou pas bref ofn va reflechir
