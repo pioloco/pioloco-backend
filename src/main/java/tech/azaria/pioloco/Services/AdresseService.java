@@ -9,10 +9,15 @@ import tech.azaria.pioloco.Entities.Adresse;
 import tech.azaria.pioloco.Repositories.AdresseRepository;
 
 @Service
-@AllArgsConstructor
+
 public class AdresseService {
     private final AdresseRepository adresseRepository;
     private final BienImmobilierService bienImmobilierService;
+
+    public AdresseService(AdresseRepository adresseRepository, BienImmobilierService bienImmobilierService) {
+        this.adresseRepository = adresseRepository;
+        this.bienImmobilierService = bienImmobilierService;
+    }
 
     public AdresseDTO createAdresse(AdresseCreateDTO adresse){
         Adresse adr=new Adresse();

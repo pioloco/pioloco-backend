@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-@AllArgsConstructor
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -24,6 +23,14 @@ public class UserService {
     private ImageService imageService;
     private final Credit credit;
     private PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository, DocumentService documentService, Credit credit, ImageService imageService, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.documentService = documentService;
+        this.credit = credit;
+        this.imageService = imageService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     //
     boolean userExist(Long id){
@@ -35,19 +42,7 @@ public class UserService {
             user.setRole(Role.PROPRIETAIRE);
         }
     }
-    @Transactional
-    public UserDTO createUser(UserCreateDTO userCreateDTO) {
-        User user=new User();
-        user.setNom(userCreateDTO.getNom());
-        user.setPrenom(userCreateDTO.getPrenom());
-        user.setEmail(userCreateDTO.getEmail());
-        user.setTelephone(userCreateDTO.getTelephone());
-        user.setRole(userCreateDTO.getRole());
-        // on va hasher le mot de passe
-        user.setPassword(passwordEncoder.encode(userCreateDTO.getPassword()));
-        userRepository.save(user);
-        return 
-    }
+
     public void deleteUser(User user){
         userRepository.delete(user);
     }

@@ -4,9 +4,7 @@
 
 package tech.azaria.pioloco.Entities;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -14,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class) // gerer les dates
-@Data
+
 @AllArgsConstructor
 @Table(name = "credits")
 public class Credit {
@@ -43,4 +41,51 @@ public class Credit {
         this.nombreCredit=this.nombreCredit+nombreCredits;
     }
 
+    public Long getIdcredit() {
+        return idcredit;
+    }
+
+    public void setIdcredit(Long idcredit) {
+        this.idcredit = idcredit;
+    }
+
+    public LocalDateTime getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(LocalDateTime dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public LocalDateTime getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(LocalDateTime dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public int getNombreCredit() {
+        return nombreCredit;
+    }
+
+    public void setNombreCredit(int nombreCredit) {
+        this.nombreCredit = nombreCredit;
+    }
+
+    public double getMontant() {
+        return Montant;
+    }
+
+    public void setMontant(double montant) {
+        Montant = montant;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

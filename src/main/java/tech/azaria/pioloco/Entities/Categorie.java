@@ -6,14 +6,13 @@ package tech.azaria.pioloco.Entities;
 import tech.azaria.pioloco.Entities.enums.NomCategorie;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
+
 @AllArgsConstructor
 @Table(name = "categories")
 public class Categorie {
@@ -44,5 +43,37 @@ public class Categorie {
     public void removeBienImmobilier(BienImmobilier bien) {
         bienImmobiliers.remove(bien);
         bien.setCategorie(null);
+    }
+
+    public Long getIdcategorie() {
+        return idcategorie;
+    }
+
+    public void setIdcategorie(Long idcategorie) {
+        this.idcategorie = idcategorie;
+    }
+
+    public NomCategorie getNom() {
+        return nom;
+    }
+
+    public void setNom(NomCategorie nom) {
+        this.nom = nom;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<BienImmobilier> getBienImmobiliers() {
+        return bienImmobiliers;
+    }
+
+    public void setBienImmobiliers(List<BienImmobilier> bienImmobiliers) {
+        this.bienImmobiliers = bienImmobiliers;
     }
 }

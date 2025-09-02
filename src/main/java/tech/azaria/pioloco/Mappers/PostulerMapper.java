@@ -27,8 +27,9 @@ public class PostulerMapper {
 
         BienImmobilier bienImmobilier = bienImmobilierRepository.findById(dto.getBienImmobilierId())
                 .orElseThrow(() -> new RuntimeException("Bien immobilier non trouvé"));
+        LocalDateTime datePostule=LocalDateTime.now();
 
-        return new Postuler(user, bienImmobilier, LocalDateTime.now());
+        return new Postuler(user, bienImmobilier, datePostule);
     }
 
     public PostulerDTO toPostulerDTO(Postuler postuler) {

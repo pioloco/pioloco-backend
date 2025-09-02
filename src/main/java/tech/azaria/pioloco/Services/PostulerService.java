@@ -16,10 +16,7 @@ public class PostulerService {
         this.postuleRepository=postuleRepository;
         this.userService=userService;
     }
-    @Transactional
-    public Postuler save(Postuler postuler){
-        postuleRepository.save(postuler);
-    }
+
 
 
 }

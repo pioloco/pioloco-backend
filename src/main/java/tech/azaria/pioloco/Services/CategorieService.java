@@ -8,11 +8,13 @@ import tech.azaria.pioloco.Entities.Categorie;
 import tech.azaria.pioloco.Repositories.CategoryRepository;
 
 @Service
-@AllArgsConstructor
+
 public class CategorieService {
     private final CategoryRepository categoryRepository;
     private final BienImmobilierService bienImmobilierService;
 
-
-
+    public CategorieService(CategoryRepository categoryRepository, BienImmobilierService bienImmobilierService) {
+        this.categoryRepository = categoryRepository;
+        this.bienImmobilierService = bienImmobilierService;
+    }
 }

@@ -13,7 +13,6 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
-@Data
 @AllArgsConstructor
 @Table(name = "adresses")
 public class Adresse {
@@ -48,5 +47,45 @@ public class Adresse {
     public void removeBienImmobilier(BienImmobilier bien) {
         bienImmobiliers.remove(bien);
         bien.setAdresse(null);
+    }
+
+    public Long getIdadresse() {
+        return idadresse;
+    }
+
+    public void setIdadresse(Long idadresse) {
+        this.idadresse = idadresse;
+    }
+
+    public @NotBlank(message = " la region ne doit pas etre vide") String getRegion() {
+        return region;
+    }
+
+    public void setRegion(@NotBlank(message = " la region ne doit pas etre vide") String region) {
+        this.region = region;
+    }
+
+    public @NotBlank(message = " la ville ne doit pas etre vide") String getVille() {
+        return ville;
+    }
+
+    public void setVille(@NotBlank(message = " la ville ne doit pas etre vide") String ville) {
+        this.ville = ville;
+    }
+
+    public String getLocalisation() {
+        return localisation;
+    }
+
+    public void setLocalisation(String localisation) {
+        this.localisation = localisation;
+    }
+
+    public List<BienImmobilier> getBienImmobiliers() {
+        return bienImmobiliers;
+    }
+
+    public void setBienImmobiliers(List<BienImmobilier> bienImmobiliers) {
+        this.bienImmobiliers = bienImmobiliers;
     }
 }

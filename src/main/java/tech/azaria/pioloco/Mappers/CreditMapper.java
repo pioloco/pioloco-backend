@@ -1,5 +1,6 @@
 package tech.azaria.pioloco.Mappers;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 import tech.azaria.pioloco.DTO.CreditCreateDTO;
 import tech.azaria.pioloco.DTO.CreditDTO;
@@ -7,6 +8,7 @@ import tech.azaria.pioloco.Entities.Credit;
 import java.time.LocalDateTime;
 
 @Component
+
 public class CreditMapper {
 
     public Credit toCredit(CreditCreateDTO dto) {
@@ -14,7 +16,7 @@ public class CreditMapper {
         credit.setDateDebut(LocalDateTime.now());
         credit.setDateFin(dto.getDateFin());
         credit.setNombreCredit(dto.getNombreCredits());
-        credit.setMontant(dto.getNombreCredits() * 10.0); // Exemple: 10€ par crédit
+        credit.setMontant(dto.getNombreCredits() * 10.0);
         return credit;
     }
 

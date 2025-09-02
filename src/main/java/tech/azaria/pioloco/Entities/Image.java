@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.ToString;
 
 @Entity
-@Data
 @AllArgsConstructor
 @Table(name = "images")
 public class Image {
@@ -28,4 +27,36 @@ public class Image {
     private BienImmobilier bienImmobilier;
 
     public Image(){}
+
+    public Long getId_image() {
+        return id_image;
+    }
+
+    public void setId_image(Long id_image) {
+        this.id_image = id_image;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getNomImage() {
+        return nomImage;
+    }
+
+    public void setNomImage(String nomImage) {
+        this.nomImage = nomImage;
+    }
+
+    public BienImmobilier getBienImmobilier() {
+        return bienImmobilier;
+    }
+
+    public void setBienImmobilier(BienImmobilier bienImmobilier) {
+        this.bienImmobilier = bienImmobilier;
+    }
 }

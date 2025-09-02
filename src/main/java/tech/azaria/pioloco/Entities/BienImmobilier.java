@@ -17,7 +17,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
 @AllArgsConstructor
 public class BienImmobilier {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,5 +57,88 @@ public class BienImmobilier {
     public BienImmobilier() {
         this.images = new HashSet<>();
         this.documents = new HashSet<>();
+    }
+
+
+    public Long getIdbien() {
+        return idbien;
+    }
+
+    public void setIdbien(Long idbien) {
+        this.idbien = idbien;
+    }
+
+    public int getNombrePiece() {
+        return nombrePiece;
+    }
+
+    public void setNombrePiece(int nombrePiece) {
+        this.nombrePiece = nombrePiece;
+    }
+
+
+    public double getSuperficie() {
+        return superficie;
+    }
+
+    public void setSuperficie (@Positive double superficie) {
+        this.superficie = superficie;
+    }
+
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(@Positive double prix) {
+        this.prix = prix;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
+    }
+
+    public Set<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(Set<Document> documents) {
+        this.documents = documents;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Statut getStatus() {
+        return status;
+    }
+
+    public void setStatus(Statut status) {
+        this.status = status;
     }
 }
