@@ -1,0 +1,70 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    env_file: .env  # Charge les variables depuis .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - internal
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}" ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer_container
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql
+      ADMINER_DESIGN: "nette"
+    ports:
+      - "8080:8080"
+    networks:
+      - internal
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+
+  # spring-app:
+  #   build: .
+  #   container_name: pioloco_app
+  #   env_file: .env  # Pour charger les variables si nécessaires
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE}
+  #     SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+  #     SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+  #   ports:
+  #     - "8081:8080"
+  #   networks:
+  #     - internal
+  #   volumes:
+  #     - ./logs:/app/logs
+  #   dns:
+  #     - 8.8.8.8
+  #     - 8.8.4.4
+
+volumes:
+  mysql_data:
+
+networks:
+  internal:
+    driver: bridge
